@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<!-- 
+		Replace path to template, title, header and body
+		with actual data.
+	 -->
+<ui:composition template="/templates/common.xhtml">
+	<ui:define name="pageTitle">MAP</ui:define>
+
+	<ui:define name="content">
+		<h:form id="mapFrm">
+			<p:panelGrid id="headerBar" style="width:100%">
+
+				<p:row>
+					<p:column>
+						<p:autoComplete id="acSimple" value="#{mapBean.adresse}"
+							completeMethod="#{mapBean.completeAdresse}" size="100"
+							forceSelection="true" maxResults="10" var="ad"
+							itemLabel="#{ad.adress}" itemValue="#{ad}">
+							<p:ajax event="itemSelect"
+								listener="#{mapBean.handleSelectAdresse}"
+								update="map,adressesList,@this" />
+						</p:autoComplete>
+					</p:column>
+
+					<p:column rowspan="2" style="width:40%;vertical-align:top"
+						headerText="Liste des adresses">
+						<p:panel style="height:100%">
+							<p:dataList id="adressesList" value="#{mapBean.adresses}"
+								var="ad" type="ordered">
+
+
+								<p:panelGrid>
+									<p:row>
+										<p:column>
+                                        #{ad.adress}
+                                    </p:column>
+										<p:column style="v-align:right">
+											<p:commandButton icon="ui-icon-circle-minus"
+												actionListener="#{mapBean.removeSelectedAdress()}" update="adressesList">
+<!-- 												TODO update map -->
+												<f:setPropertyActionListener value="#{ad}"
+													target="#{mapBean.selectedAdress}" />
+											</p:commandButton>
+										</p:column>
+									</p:row>
+								</p:panelGrid>
+							</p:dataList>
+						</p:panel>
+
+					</p:column>
+
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<p:gmap id="map" center="#{mapBean.centerMap}"
+							zoom="#{mapBean.zoom}" type="PLAN" style="height:500px"
+							model="#{mapBean.advancedModel}" streetView="true">
+
+							<p:ajax event="overlaySelect"
+								listener="#{mapBean.onMarkerSelect}" />
+							<p:ajax event="stateChange" listener="#{mapBean.onStateChange}" />
+
+							<p:gmapInfoWindow>
+
+
+								<p:outputPanel
+									style="text-align:center;display:block;margin:auto:">
+
+									<h:outputText value="#{mapBean.marker.title}" />
+
+								</p:outputPanel>
+
+							</p:gmapInfoWindow>
+
+						</p:gmap>
+					</p:column>
+
+
+
+				</p:row>
+
+
+
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>
