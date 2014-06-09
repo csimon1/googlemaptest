@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+	<h:form id="headerForm">
+        
+		<p:panelGrid id="headerBar">
+			<p:row>
+				<p:column id="appTitle">Google Map Test</p:column>
+				<p:column id="userInfo">login</p:column>
+			</p:row>
+			<p:row>
+				<p:column colspan="2">
+					<p:menubar id="topMenuBar">
+
+						<p:menuitem value="#{headerBean.home.name}"
+							url="#{headerBean.home.url}" icon="#{headerBean.home.icon}"
+							rendered="#{headerBean.home.rendered}" />
+
+						<p:menuitem value="#{headerBean.map.name}"
+							url="#{headerBean.map.url}" icon="#{headerBean.map.icon}"
+							rendered="#{headerBean.map.rendered}" />
+
+					</p:menubar>
+				</p:column>
+			</p:row>
+
+		</p:panelGrid>
+
+	</h:form>
+</f:view>
+</html>

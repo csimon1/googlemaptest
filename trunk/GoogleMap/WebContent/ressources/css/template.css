@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+body {
+	margin: auto;
+}
+
+.ui-panel-content {
+	padding: 0.1em 0.2em !important;
+}
+
+#headerForm\:headerBar {
+	width: 100%;
+	margin: 0 0 10px 0;
+}
+
+#headerForm\:appTitle {
+	background-color: #2E9AFE;
+}
+
+#headerForm\:userInfo {
+	text-align: right;
+	font-size: 10pt;
+}
+
+#headerForm\:topMenuBar {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+#pageTitle {
+	font-size: 30px;
+	font-style: italic;
+	font-weight: bold;
+}
+
+#footerForm\:footerBar {
+	font-size: 9pt;
+	font-style: italic;
+	width: 100%;
+	border: none;
+}
+
+#footerForm\:footerBar .column_footer {
+	width: 33%;
+	
+	
+}
+
+#footerForm\:footerBar .column_left {
+	text-align: left
+}
+
+#footerForm\:footerBar .column_center {
+	text-align: center;
+}
+
+#footerForm\:footerBar .column_right {
+	text-align: right;
+}
